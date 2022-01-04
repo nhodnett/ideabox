@@ -1,7 +1,6 @@
 html,
 body {
   display: flex;
-  /* flex-direction: column; */
   height: 100%;
   width: 100%;
 }
@@ -11,17 +10,46 @@ main {
   width: 75%;
 }
 
+h1,
+.show-starred-ideas {
+  color: #E9E9F3;
+}
+
+h3 {
+  color: #BFBFDD;
+}
+
+.save-button {
+  background-color: #353567;
+  color: #E9E9F3;
+}
+
+#title,
+#body,
+.save-button,
+#search {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.show-starred-ideas,
+.comment-button {
+  background-color: #5356A4;
+}
+
 .menu {
-  /* display: flex; */
-  /* flex-direction: column; */
   background-color: #1F1F3D;
   height: 100%;
   width: 25%;
 }
 
 .top-section {
-  /* display: flex; */
-  /* flex-direction: column; */
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
+  justify-content: center;
   background-color: #A9AAD2;
   height: 40%;
 }
@@ -30,4 +58,10 @@ main {
   display: grid;
   background-color: #EAEAF4;
   height: 60%;
+}
+
+.idea-card {
+  height: 30%;
+  width: 30%;
+  border: #000000 3px solid;
 }
