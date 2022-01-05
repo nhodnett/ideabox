@@ -3,6 +3,7 @@ body {
   display: flex;
   height: 100%;
   width: 100%;
+  font-family: 'Open Sans';
 }
 
 main {
@@ -13,6 +14,7 @@ main {
 h1,
 .show-starred-ideas {
   color: #E9E9F3;
+  font-family: 'Open Sans', bold;
 }
 
 h3 {
@@ -22,6 +24,7 @@ h3 {
 .save-button {
   background-color: #353567;
   color: #E9E9F3;
+  font-family: 'Open Sans', bold;
 }
 
 #title,
@@ -31,6 +34,10 @@ h3 {
   width: 50%;
   margin: auto;
   text-align: center;
+}
+
+#search {
+  font-family: 'Open Sans', bold;
 }
 
 .show-starred-ideas,
@@ -61,7 +68,29 @@ h3 {
 }
 
 .idea-card {
-  height: 30%;
-  width: 30%;
-  border: #000000 3px solid;
+  align-items: flex-end;
+  height: 200px;
+  width: 175px;
+  border: #1F1F3D 2px solid;
+  margin: 25px;
+}
+
+.user-idea-header {
+  background-color: #1F1F3D;
+  height: 10%;
+  width: 100%
+}
+
+.user-idea {
+  background-color: #FFFFFF;
+  height: 80%;
+  width: 100%;
+}
+
+.comment-button {
+  background-color: #5356A4;
+  height: 10%;
+  width: 100%;
+  color: #E9E9F3;
+  font-family: 'Open Sans', bold;
 }
