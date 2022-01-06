@@ -6,6 +6,7 @@ var ideaBody = document.querySelector('#body');
 var ideaCardGrid = document.querySelector('.idea-card-grid');
 
 saveButton.addEventListener('click', saveIdeaCard);
+saveButton.addEventListener('mouseover', disableSaveButton);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
@@ -30,3 +31,9 @@ function insertIdeaCard() {
     </div>
   `;
 };
+
+function disableSaveButton() {
+  if (ideaTitle.value == false || ideaBody.value == false) {
+    document.querySelector('.save-button').style.backgroundColor = '#000000';
+  }
+}
