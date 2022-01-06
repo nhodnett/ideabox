@@ -6,14 +6,6 @@ class Idea {
     this.star = false;
   }
 
-  saveIdeaCard() {
-    var idea = new Idea(ideaTitle.value, ideaBody.value);
-    ideas.push(idea);
-    console.log(ideas);
-    //insertIdeaCard();
-
-  }
-
   updateIdea() {
     // should update the idea's starred state.
   }

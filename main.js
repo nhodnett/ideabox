@@ -8,11 +8,13 @@ var ideaCardGrid = document.querySelector('.idea-card-grid');
 saveButton.addEventListener('click', saveIdeaCard);
 
 function saveIdeaCard() {
+  if (ideaTitle.value != false && ideaBody.value != false) {
   var idea = new Idea(ideaTitle.value, ideaBody.value);
   ideas.push(idea);
   insertIdeaCard();
   ideaTitle.value = "";
   ideaBody.value = "";
+  }
 }
 
 function insertIdeaCard() {
