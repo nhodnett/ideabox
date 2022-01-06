@@ -11,6 +11,8 @@ function saveIdeaCard() {
   var idea = new Idea(ideaTitle.value, ideaBody.value);
   ideas.push(idea);
   insertIdeaCard();
+  ideaTitle.value = "";
+  ideaBody.value = "";
 }
 
 function insertIdeaCard() {
