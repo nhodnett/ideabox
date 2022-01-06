@@ -7,22 +7,8 @@ var ideaCardGrid = document.querySelector('.idea-card-grid');
 var topParent = document.querySelector('.top-section');
 
 saveButton.addEventListener('click', saveIdeaCard);
-// saveButton.addEventListener('mouseover', disableSaveButton);
-// saveButton.addEventListener('mouseout', enableSaveButton);
-topParent.addEventListener('mouseover', function(event) {
-  if (event.target.className === 'save-button') {
-    if (ideaTitle.value == false || ideaBody.value == false) {
-      document.querySelector('.save-button').style.opacity = '0.5';
-      document.querySelector('.save-button').style.cursor = 'none';
-    }
-  }
-});
-topParent.addEventListener('mouseout', function(event) {
-  if (event.target.className === 'save-button') {
-      document.querySelector('.save-button').style.opacity = '1';
-      document.querySelector('.save-button').style.cursor = '';
-  }
-});
+saveButton.addEventListener('mouseover', disableSaveButton);
+saveButton.addEventListener('mouseout', enableSaveButton);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
@@ -54,5 +40,21 @@ function disableSaveButton(event) {
       document.querySelector('.save-button').style.opacity = '0.5';
       document.querySelector('.save-button').style.cursor = 'none';
     }
+  }
+}
+
+function disableSaveButton(event) {
+  if (event.target.className === 'save-button') {
+    if (ideaTitle.value == false || ideaBody.value == false) {
+      document.querySelector('.save-button').style.opacity = '0.5';
+      document.querySelector('.save-button').style.cursor = 'none';
+    }
+  }
+}
+
+function enableSaveButton(event) {
+  if (event.target.className === 'save-button') {
+      document.querySelector('.save-button').style.opacity = '1';
+      document.querySelector('.save-button').style.cursor = '';
   }
 }
