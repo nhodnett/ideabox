@@ -62,12 +62,15 @@ h3 {
 }
 
 .idea-section {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   background-color: #EAEAF4;
   height: 60%;
 }
 
 .idea-card {
+  display: flex;
+  flex-direction: column;
   align-items: flex-end;
   height: 200px;
   width: 175px;
