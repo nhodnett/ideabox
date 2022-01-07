@@ -5,12 +5,12 @@ var ideaTitle = document.querySelector('#title');
 var ideaBody = document.querySelector('#body');
 var ideaCardGrid = document.querySelector('.idea-card-grid');
 var topParent = document.querySelector('.top-section');
-var deleteIcon = document.querySelector('.delete-icon')
+var ideaSection = document.querySelector('.idea-section')
 
 saveButton.addEventListener('click', saveIdeaCard);
 saveButton.addEventListener('mouseover', disableSaveButton);
 saveButton.addEventListener('mouseout', enableSaveButton);
-deleteIcon.addEventListener('click', deleteIdeaCard);
+ideaSection.addEventListener('click', deleteIdeaCard);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
@@ -24,11 +24,11 @@ function saveIdeaCard() {
 
 function insertIdeaCard() {
   ideaCardGrid.innerHTML += `
-    <div class="idea-card">
+    <div id=${ideas[ideas.length-1].id} class="idea-card">
       <div class="user-idea-header">
         <img src="./assets/star.svg" alt="star"/>
         <img src="./assets/star-active.svg" alt="star-active"/>
-        <img src="./assets/delete.svg" alt="delete-icon"/>
+        <img id=${ideas[ideas.length-1].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
         <img src="./assets/delete-active.svg" alt="delete-icon-active"/>
       </div>
       <div class="user-idea">
@@ -71,9 +71,11 @@ function enableSaveButton(event) {
 
 function deleteIdeaCard(event) {
   console.log(ideas);
-  if (event.target.className === 'idea-card') {
+  console.log(event.target);
+  console.log(event.target.id);
+  if (event.target.className === 'delete-icon') {
     for (var i = 0; i < ideas.length; i++) {
-      if (`${ideas[i].id}` === event.target.id) {
+      if (ideas[i].id == event.target.id) {
         ideas.splice(i, 1);
       }
     console.log(ideas);
