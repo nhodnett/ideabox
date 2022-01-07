@@ -5,10 +5,12 @@ var ideaTitle = document.querySelector('#title');
 var ideaBody = document.querySelector('#body');
 var ideaCardGrid = document.querySelector('.idea-card-grid');
 var topParent = document.querySelector('.top-section');
+var deleteIcon = document.querySelector('.delete-icon')
 
 saveButton.addEventListener('click', saveIdeaCard);
 saveButton.addEventListener('mouseover', disableSaveButton);
 saveButton.addEventListener('mouseout', enableSaveButton);
+deleteIcon.addEventListener('click', deleteIdeaCard);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
@@ -23,13 +25,21 @@ function saveIdeaCard() {
 function insertIdeaCard() {
   ideaCardGrid.innerHTML += `
     <div class="idea-card">
-      <div class="user-idea-header"></div>
+      <div class="user-idea-header">
+        <img src="./assets/star.svg" alt="star"/>
+        <img src="./assets/star-active.svg" alt="star-active"/>
+        <img src="./assets/delete.svg" alt="delete-icon"/>
+        <img src="./assets/delete-active.svg" alt="delete-icon-active"/>
+      </div>
       <div class="user-idea">
         <h3>${ideas[ideas.length-1].title}</h3>
         <p>${ideas[ideas.length-1].body}</p>
       </div>
-      <button class="comment-button">Comment</button>
-      <label class="comment hidden"></label>
+      <div class="user-idea-footer">
+        <img src="./assets/comment.svg" alt="comment-icon"/>
+        <section class="comment-button">Comment</section>
+        <label class="comment hidden"></label>
+      </div>
     </div>
   `;
 };
@@ -58,3 +68,25 @@ function enableSaveButton(event) {
       document.querySelector('.save-button').style.cursor = '';
   }
 }
+
+function deleteIdeaCard(event) {
+  console.log(ideas);
+  if (event.target.className === 'idea-card') {
+    for (var i = 0; i < ideas.length; i++) {
+      if (`${ideas[i].id}` === event.target.id) {
+        ideas.splice(i, 1);
+      }
+    console.log(ideas);
+    }
+  }
+}
+
+/*
+
+Goal: Remove idea card from both ideas array AND HTML display using deleteIdeaCard() function.
+
+1. Add querySelector variable for .idea-card-grid.
+2. Add event listener to execute the deleteIdeaCard() function on click of the the targeted delete button.
+3. Write deleteIdeaCard()function so that it removes the item from the array AND the page.
+
+*/
