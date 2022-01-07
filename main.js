@@ -24,7 +24,7 @@ function saveIdeaCard() {
 
 function insertIdeaCard() {
   ideaCardGrid.innerHTML += `
-    <div id=${ideas[ideas.length-1].id} class="idea-card">
+    <div class="idea-card">
       <div class="user-idea-header">
         <img src="./assets/star.svg" alt="star"/>
         <img src="./assets/star-active.svg" alt="star-active"/>
@@ -70,16 +70,38 @@ function enableSaveButton(event) {
 }
 
 function deleteIdeaCard(event) {
-  console.log(ideas);
-  console.log(event.target);
-  console.log(event.target.id);
   if (event.target.className === 'delete-icon') {
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id == event.target.id) {
         ideas.splice(i, 1);
       }
-    console.log(ideas);
     }
+  }
+  regenerateIdeaCards();
+}
+
+function regenerateIdeaCards() {
+  ideaCardGrid.innerHTML = "";
+  for (var i = 0; i < ideas.length; i++) {
+    ideaCardGrid.innerHTML += `
+    <div class="idea-card">
+      <div class="user-idea-header">
+        <img src="./assets/star.svg" alt="star"/>
+        <img src="./assets/star-active.svg" alt="star-active"/>
+        <img id=${ideas[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
+        <img src="./assets/delete-active.svg" alt="delete-icon-active"/>
+      </div>
+      <div class="user-idea">
+        <h3>${ideas[i].title}</h3>
+        <p>${ideas[i].body}</p>
+      </div>
+      <div class="user-idea-footer">
+        <img src="./assets/comment.svg" alt="comment-icon"/>
+        <section class="comment-button">Comment</section>
+        <label class="comment hidden"></label>
+      </div>
+    </div>
+    `
   }
 }
 
