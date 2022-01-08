@@ -7,7 +7,11 @@ class Idea {
   }
 
   updateIdea() {
-    // should update the idea's starred state.
+    if (this.star === false) {
+      this.star = true;
+    } else {
+      this.star = false;
+    }
   }
 
 }
