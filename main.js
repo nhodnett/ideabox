@@ -11,38 +11,17 @@ saveButton.addEventListener('click', saveIdeaCard);
 saveButton.addEventListener('mouseover', disableSaveButton);
 saveButton.addEventListener('mouseout', enableSaveButton);
 ideaSection.addEventListener('click', deleteIdeaCard);
+ideaSection.addEventListener('click', changeImage);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
   var idea = new Idea(ideaTitle.value, ideaBody.value);
   ideas.push(idea);
-  insertIdeaCard();
+  regenerateIdeaCards();
   ideaTitle.value = "";
   ideaBody.value = "";
   }
 }
-
-function insertIdeaCard() {
-  ideaCardGrid.innerHTML += `
-    <div class="idea-card">
-      <div class="user-idea-header">
-        <img class="star" id=${ideas[ideas.length-1].id} src="./assets/star.svg" alt="star"/>
-        <img class="star-active hidden" id=${ideas[ideas.length-1].id} src="./assets/star-active.svg" alt="star-active"/>
-        <img id=${ideas[ideas.length-1].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
-        <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
-      </div>
-      <div class="user-idea">
-        <h3>${ideas[ideas.length-1].title}</h3>
-        <p>${ideas[ideas.length-1].body}</p>
-      </div>
-      <div class="user-idea-footer">
-        <img src="./assets/comment.svg" alt="comment-icon"/>
-        <section class="comment-button">Comment</section>
-        <label class="comment hidden"></label>
-      </div>
-    </div>
-  `;
-};
 
 function disableSaveButton(event) {
   if (event.target.className === 'save-button') {
@@ -83,20 +62,15 @@ function deleteIdeaCard(event) {
 function regenerateIdeaCards() {
   var starStatus;
   var activeStarStatus;
+  console.log("BEFORE", activeStarStatus);
   ideaCardGrid.innerHTML = "";
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star === true) {
-      starStatus = 'hidden';
-      activeStarStatus = '';
-    } else if (ideas[i].star === false) {
-      starStatus = '';
-      activeStarStatus = 'hidden';
-    }
+    if (ideas[i].star === false) {
+    console.log("AFTER", activeStarStatus);
     ideaCardGrid.innerHTML += `
     <div class="idea-card">
       <div class="user-idea-header">
-        <img class="star ${starStatus}" id=${ideas[i].id} src="./assets/star.svg" alt="star"/>
-        <img class="star-active ${starStatus}" id=${ideas[i].id} src="./assets/star-active.svg" alt="star-active"/>
+        <img class="star" id=${ideas[i].id} src="./assets/star.svg" alt="star"/>
         <img id=${ideas[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
         <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
       </div>
@@ -111,16 +85,40 @@ function regenerateIdeaCards() {
       </div>
     </div>
     `
+  } else if (ideas[i].star === true) {
+    ideaCardGrid.innerHTML += `
+    <div class="idea-card">
+      <div class="user-idea-header">
+        <img class="star-active" id=${ideas[i].id} src="./assets/star-active.svg" alt="star-active"/>
+        <img id=${ideas[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
+        <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
+      </div>
+      <div class="user-idea">
+        <h3>${ideas[i].title}</h3>
+        <p>${ideas[i].body}</p>
+      </div>
+      <div class="user-idea-footer">
+        <img src="./assets/comment.svg" alt="comment-icon"/>
+        <section class="comment-button">Comment</section>
+        <label class="comment hidden"></label>
+      </div>
+    </div>
+    `
+    }
   }
 }
 
-function changeImage() {
+function changeImage(event) {
+  event.preventDefault();
+  debugger
   if (event.target.className === 'star' || event.target.className === 'star-active') {
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id == event.target.id) {
-        ideas.updateIdea();
+        ideas[i].updateIdea();
       }
+      // .classList.add('hidden');
+      // .classList.remove('hidden');
     }
+    regenerateIdeaCards();
   }
-  regenerateIdeaCards();
 }
