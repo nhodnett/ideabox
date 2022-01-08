@@ -17,8 +17,10 @@ h1,
   font-family: 'Open Sans', bold;
 }
 
-h3 {
-  color: #BFBFDD;
+h3,
+p{
+  color: #1F1F3D;
+  padding-left: 10px;
 }
 
 .top-section {
