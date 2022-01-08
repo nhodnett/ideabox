@@ -17,14 +17,13 @@ h1,
   font-family: 'Open Sans', bold;
 }
 
-h3 {
-  color: #BFBFDD;
+h3,
+p{
+  color: #1F1F3D;
+  padding-left: 10px;
 }
 
 .top-section {
-  /* display: flex;
-  flex-direction: column; */
-  /* margin: auto; */
   text-align: center;
   justify-content: center;
   background-color: #A9AAD2;
@@ -34,7 +33,6 @@ h3 {
 .inputs {
   display: flex;
   flex-direction: column;
-  /* margin: auto; */
   text-align: center;
   justify-content: space-between;
   height: 100%;
@@ -56,7 +54,6 @@ h3 {
 
 #title {
   width: 50%;
-  /* margin: auto; */
   text-align: justify;
 }
 
@@ -67,7 +64,6 @@ margin-right: 43%;
 #body {
   height: 50px;
   width: 50%;
-  /* margin: auto; */
   text-align: center;
 }
 
@@ -113,6 +109,11 @@ margin-right: 43%;
   width: 175px;
   border: #1F1F3D 2px solid;
   margin: 25px;
+}
+
+.idea-card-grid {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 img {
