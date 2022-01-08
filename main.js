@@ -60,13 +60,9 @@ function deleteIdeaCard(event) {
 }
 
 function regenerateIdeaCards() {
-  var starStatus;
-  var activeStarStatus;
-  console.log("BEFORE", activeStarStatus);
   ideaCardGrid.innerHTML = "";
   for (var i = 0; i < ideas.length; i++) {
     if (ideas[i].star === false) {
-    console.log("AFTER", activeStarStatus);
     ideaCardGrid.innerHTML += `
     <div class="idea-card">
       <div class="user-idea-header">
@@ -110,14 +106,11 @@ function regenerateIdeaCards() {
 
 function changeImage(event) {
   event.preventDefault();
-  debugger
   if (event.target.className === 'star' || event.target.className === 'star-active') {
     for (var i = 0; i < ideas.length; i++) {
       if (ideas[i].id == event.target.id) {
         ideas[i].updateIdea();
       }
-      // .classList.add('hidden');
-      // .classList.remove('hidden');
     }
     regenerateIdeaCards();
   }
