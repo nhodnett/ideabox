@@ -1,7 +1,8 @@
 var ideas = [];
 var filterIdeasStatus = false;
 var searchIdeasStatus = false;
-var inputData;
+var inputString = '';
+var inputData = [];
 var searchIndex = [];
 
 var saveButton = document.querySelector('.save-button');
@@ -19,9 +20,8 @@ saveButton.addEventListener('mouseout', enableSaveButton);
 ideaSection.addEventListener('click', deleteIdeaCard);
 ideaSection.addEventListener('click', changeImage);
 borderBox.addEventListener('click', showStarredIdeas);
-// borderBox.addEventListener('click', toggleFilterButton);
 borderBox.addEventListener('click', showAllIdeas);
-// searchBox.addEventListener('input', outputSearch);
+searchBox.addEventListener('input', outputSearch);
 
 function saveIdeaCard() {
   if (ideaTitle.value != false && ideaBody.value != false) {
@@ -71,7 +71,7 @@ function deleteIdeaCard(event) {
 function regenerateIdeaCards(functionInput) {
   ideaCardGrid.innerHTML = '';
   if (filterIdeasStatus === false) {
-    for (var i = 0; i < ideas.length; i++) {
+    for (var i = 0; i < functionInput.length; i++) {
       if (functionInput[i].star === false) {
         ideaCardGrid.innerHTML += `
         <div class="idea-card">
@@ -114,12 +114,12 @@ function regenerateIdeaCards(functionInput) {
     }
   }
   if (filterIdeasStatus === true) {
-    for (var i = 0; i < ideas.length; i++) {
+    for (var i = 0; i < functionInput.length; i++) {
       if (functionInput[i].star === true) {
         ideaCardGrid.innerHTML += `
         <div class="idea-card">
           <div class="user-idea-header">
-            <img class="star" id=${functionInput[i].id} src="./assets/star.svg" alt="star"/>
+            <img class="star-active" id=${functionInput[i].id} src="./assets/star-active.svg" alt="star-active"/>
             <img id=${functionInput[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
             <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
           </div>
@@ -197,113 +197,36 @@ function toggleFilterButton() {
   }
 }
 
-// function searchInputData() {
-//   var inputString = searchBox.value;
-//   // var inputNoPunctuation = inputString.replace(/[.,\/#!*;:{}$%\^&\=\-_`~()]/g,'');
-//   // var inputData = inputNoPunctuation.split(' ');
-//   var inputData = inputString.split(' ');
-//   var lengthCheck = 0;
-//   for (var i = 0; i < ideas.length; i++) {
-//     for (var j = 0; j < inputData.length; j++) {
-//       if (ideas[i].body.includes(inputData[j]) || ideas[i].title.includes(inputData[j])) {
-//         lengthCheck++;
-//       }
-//     }
-//     if (lengthCheck === inputData.length) {
-//       searchIndex.push(ideas[i]);
-//       lengthCheck = 0;
-//     }
-//   }
-// }
+function searchInputData() {
+  inputString = searchBox.value;
+  // var inputNoPunctuation = inputString.replace(/[.,\/#!*;:{}$%\^&\=\-_`~()]/g,'');
+  // var inputData = inputNoPunctuation.split(' ');
+  inputData = inputString.split(' ');
+  var lengthCheck = 0;
+  for (var i = 0; i < ideas.length; i++) {
+    for (var j = 0; j < inputData.length; j++) {
+      if (ideas[i].body.includes(inputData[j]) || ideas[i].title.includes(inputData[j])) {
+        lengthCheck++;
+      }
+    }
+    if (lengthCheck === inputData.length) {
+      searchIndex.push(ideas[i]);
+      lengthCheck = 0;
+    }
+  }
+}
 
-// function outputSearch() {
-//   if (searchBox.value = "") {
-//     for (var i = 0; i < ideas.length; i++) {
-//       if (ideas[i].star === true) {
-//         ideaCardGrid.innerHTML += `
-//         <div class="idea-card">
-//           <div class="user-idea-header">
-//             <img class="star-active" id=${ideas[i].id} src="./assets/star-active.svg" alt="star-active"/>
-//             <img id=${ideas[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
-//             <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
-//           </div>
-//           <div class="user-idea">
-//             <h3>${ideas[i].title}</h3>
-//             <p>${ideas[i].body}</p>
-//           </div>
-//           <div class="user-idea-footer">
-//             <img src="./assets/comment.svg" alt="comment-icon"/>
-//             <section class="comment-button">Comment</section>
-//             <label class="comment hidden"></label>
-//           </div>
-//         </div>
-//         `
-//       }
-//     }
-//       for (var i = 0; i < ideas.length; i++) {
-//         if (ideas[i].star === true) {
-//           ideaCardGrid.innerHTML += `
-//           <div class="idea-card">
-//             <div class="user-idea-header">
-//               <img class="star-active" id=${ideas[i].id} src="./assets/star-active.svg" alt="star-active"/>
-//               <img id=${ideas[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
-//               <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
-//             </div>
-//             <div class="user-idea">
-//               <h3>${ideas[i].title}</h3>
-//               <p>${ideas[i].body}</p>
-//             </div>
-//             <div class="user-idea-footer">
-//               <img src="./assets/comment.svg" alt="comment-icon"/>
-//               <section class="comment-button">Comment</section>
-//               <label class="comment hidden"></label>
-//             </div>
-//           </div>
-//           `}
-//         }
-//
-//   searchInputData();
-//   ideaCardGrid.innerHTML = '';
-//   for (var i = 0; i < searchIndex.length; i++) {
-//     if (searchIndex[i].star === false) {
-//     ideaCardGrid.innerHTML += `
-//     <div class="idea-card">
-//       <div class="user-idea-header">
-//         <img class="star" id=${searchIndex[i].id} src="./assets/star.svg" alt="star"/>
-//         <img id=${searchIndex[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
-//         <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
-//       </div>
-//       <div class="user-idea">
-//         <h3>${searchIndex[i].title}</h3>
-//         <p>${searchIndex[i].body}</p>
-//       </div>
-//       <div class="user-idea-footer">
-//         <img src="./assets/comment.svg" alt="comment-icon"/>
-//         <section class="comment-button">Comment</section>
-//         <label class="comment hidden"></label>
-//       </div>
-//     </div>
-//     `
-//   } else if (searchIndex[i].star === true) {
-//     ideaCardGrid.innerHTML += `
-//     <div class="idea-card">
-//       <div class="user-idea-header">
-//         <img class="star-active" id=${searchIndex[i].id} src="./assets/star-active.svg" alt="star-active"/>
-//         <img id=${searchIndex[i].id} class="delete-icon" src="./assets/delete.svg" alt="delete-icon"/>
-//         <img class="delete-active hidden" src="./assets/delete-active.svg" alt="delete-icon-active"/>
-//       </div>
-//       <div class="user-idea">
-//         <h3>${searchIndex[i].title}</h3>
-//         <p>${searchIndex[i].body}</p>
-//       </div>
-//       <div class="user-idea-footer">
-//         <img src="./assets/comment.svg" alt="comment-icon"/>
-//         <section class="comment-button">Comment</section>
-//         <label class="comment hidden"></label>
-//       </div>
-//     </div>
-//     `
-//     }
-//   }
-//   searchIndex = [];
-// }
+function outputSearch() {
+  inputData = [];
+  searchIndex = [];
+  inputString = searchBox.value;
+  if (inputString != '') {
+    searchIdeasStatus = true;
+    searchInputData();
+    regenerateIdeaCards(searchIndex);
+    inputString = '';
+  } else {
+    searchIdeasStatus = false;
+    regenerateIdeaCards(ideas);
+  }
+}
