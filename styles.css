@@ -1,24 +1,27 @@
 html,
 body {
   display: flex;
-  height: 100%;
+  justify-content: stretch;
+  min-height: 100%;
   width: 100%;
   font-family: 'Open Sans';
 }
 
 main {
-  height: 100%;
+  min-height: 100%;
   width: 75%;
 }
 
 h1,
-.show-starred-ideas {
+.starred-ideas {
   color: #E9E9F3;
   font-family: 'Open Sans', bold;
+  padding-left: 10px;
 }
 
+h4,
 h3,
-p{
+p {
   color: #1F1F3D;
   padding-left: 10px;
 }
@@ -34,7 +37,7 @@ p{
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 100%;
 }
 
@@ -54,11 +57,11 @@ p{
 
 #title {
   width: 50%;
-  text-align: justify;
+  text-align: center;
 }
 
 .title-text {
-margin-right: 43%;
+margin-right: 46.5%;
 }
 
 #body {
@@ -79,34 +82,61 @@ margin-right: 43%;
   text-align: center;
 }
 
+.search-class {
+  position: relative;
+}
+
+.delete-active {
+  position: absolute;
+}
+
 #search {
   font-family: 'Open Sans', bold;
+  text-align: justify;
+  /* margin-right: 80% */
 }
 
 .show-starred-ideas,
+.show-all-ideas,
 .comment-button {
   background-color: #5356A4;
+  margin: 5%;
+  color: #E9E9F3;
+  font-family: 'Open Sans', bold;
+}
+
+.starred-ideas {
+  margin: 1%;
 }
 
 .menu {
-  background-color: #1F1F3D;
-  height: 100%;
+  min-height: 100%;
   width: 25%;
+  background-color: #1F1F3D;
+}
+
+.border-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-top: 3px;
+  border-bottom: 3px;
+  border-color: #5356A4;
 }
 
 .idea-section {
   display: flex;
   flex-wrap: wrap;
   background-color: #EAEAF4;
-  height: 60%;
+  min-height: 60%;
 }
 
 .idea-card {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  height: 200px;
-  width: 175px;
+  height: 300px;
+  width: 250px;
   border: #1F1F3D 2px solid;
   margin: 25px;
 }
@@ -132,7 +162,7 @@ img {
   justify-content: space-between;
   align-items: center;
   background-color: #1F1F3D;
-  height: 25px;
+  height: 50px;
   width: 100%
 }
 
@@ -141,7 +171,7 @@ img {
   justify-content: flex-start;
   align-items: center;
   background-color: #5356A4;
-  height: 25px;
+  height: 50px;
   width: 100%
 }
 
@@ -156,6 +186,7 @@ img {
   font-family: 'Open Sans', bold;
   font-size: 14px;
 }
+
 .hidden {
   display: none
 }
