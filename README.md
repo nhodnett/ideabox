@@ -25,7 +25,7 @@ https://github.com/nhodnett/ideabox
 - If the user really likes the idea, they may activate the star icon by clicking on it in the upper left-hand corner of the idea card.
 - If the user decides the idea was never really that great in the first place, they may hit the delete icon <u>*X*</u> in the upper right-hand corner of the idea card.  After that, the idea will be permanently removed from the system.
 
-![](https://giphy.com/embed/ZoFpE8MFZmtka30Gjz)
+![](https://media.giphy.com/media/ZoFpE8MFZmtka30Gjz/giphy.gif)
 
 ## Future Additions
 - In the next release, the user will be able to filter their ideas to only show their favorited ideas by clicking the <u>*Show Starred Ideas*</u> button.
