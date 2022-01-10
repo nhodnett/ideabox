@@ -41,13 +41,7 @@ p {
   height: 100%;
 }
 
-.title-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+.title-box,
 .body-box {
   display: flex;
   flex-direction: column;
@@ -61,7 +55,7 @@ p {
 }
 
 .title-text {
-margin-right: 46.5%;
+  margin-right: 46.5%;
 }
 
 #body {
@@ -85,8 +79,6 @@ margin-right: 46.5%;
 
 .search-class {
   position: relative;
-  /* top: 50px;
-  left: 300px; */
 }
 
 .search {
@@ -98,7 +90,6 @@ margin-right: 46.5%;
   font-family: 'Open Sans', bold;
   text-align: left;
   padding-left: 50px;
-  /* margin-right: 80% */
 }
 
 .show-starred-ideas,
@@ -152,8 +143,8 @@ margin-right: 46.5%;
 }
 
 img {
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   padding: 5px;
 }
 
