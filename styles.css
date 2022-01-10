@@ -184,6 +184,12 @@ img {
   font-size: 14px;
 }
 
+hr {
+  height: 2px;
+  background-color: #353567;
+  border: none;
+}
+
 .hidden {
   display: none
 }
